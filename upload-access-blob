@@ -1,0 +1,22 @@
+from azure.storage.blob import BlobServiceClient, BlobClient, ContainerClient
+
+account_name = "ankit"
+account_key = "e4223uiu46777h224352"
+
+# Construct the connection string
+connect_str = f"DefaultEndpointsProtocol=https;AccountName={ankit};AccountKey={e4223uiu46777h224352};EndpointSuffix=core.windows.net"
+
+
+# Create the BlobServiceClient object which will be used to create a container client
+blob_service_client = BlobServiceClient.from_connection_string(connect_str)
+
+
+container_name = "mycontainer"
+
+container_client = blob_service_client.get_container_client(container_name)
+container_client.create_container()
+
+local_file_name = "example.txt"
+blob_name = "example.txt"
+with open(local_file_name, "rb") as data:
+    container_client.upload_blob(name=blob_name, data=data)
