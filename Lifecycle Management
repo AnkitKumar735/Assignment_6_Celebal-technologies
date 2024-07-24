@@ -1,0 +1,5 @@
+# Define lifecycle rule
+from azure.storage.blob import RetentionPolicy, StorageAnalyticsLogging
+
+policy = RetentionPolicy(enabled=True, days=30)
+blob_service_client.set_blob_service_properties(delete_retention_policy=policy)
