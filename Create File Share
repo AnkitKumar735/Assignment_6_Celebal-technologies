@@ -1,0 +1,6 @@
+from azure.storage.fileshare import ShareServiceClient
+
+service_client = ShareServiceClient.from_connection_string(connect_str)
+share_client = service_client.get_share_client(share_name)
+file_client = share_client.get_file_client(file_name)
+file_client.upload_file(local_file_path)
