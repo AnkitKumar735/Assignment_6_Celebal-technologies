@@ -1,0 +1,10 @@
+from azure.identity import DefaultAzureCredential
+from azure.storage.blob import BlobServiceClient
+
+credential = DefaultAzureCredential()
+blob_service_client = BlobServiceClient(account_url=account_url, credential=credential)
+
+from azure.storage.blob import BlobServiceClient
+
+connect_str = "DefaultEndpointsProtocol=https;AccountName=<ankit>;AccountKey=<errt85698598223sfh88u43>;EndpointSuffix=core.windows.net"
+blob_service_client = BlobServiceClient.from_connection_string(connect_str)
