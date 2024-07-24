@@ -1,0 +1,15 @@
+from azure.storage.blob import BlobServiceClient, BlobSasPermissions, generate_blob_sas
+from datetime import datetime, timedelta
+
+blob_service_client = BlobServiceClient.from_connection_string(connect_str)
+container_client = blob_service_client.get_container_client(container_name)
+
+# Define access policy
+access_policy_id = "policy-id"
+access_policy = {
+    "expiry": datetime.utcnow() + timedelta(hours=1),
+    "permissions": BlobSasPermissions(read=True)
+}
+
+# Set access policy on container
+container_client.set_container_access_policy(access_policy_id, [access_policy])
